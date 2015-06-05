@@ -53,6 +53,7 @@ class FrontEndTestCase(TestCase):
         author = User.objects.get(pk=1)
         category = Category()
         category.name = "Test Category"
+        category.save()
         for count in range(1, 11):
             post = Post(title="Post %d Title" % count,
                         text="foo",
@@ -61,10 +62,11 @@ class FrontEndTestCase(TestCase):
                 # publish the first five posts
                 pubdate = self.now - self.timedelta * count
                 post.published_date = pubdate
-            if count % 2:
-                post.category = category
             post.save()
-
+            if count % 2:
+                category.posts.add(post)
+                category.save()
+			
     def test_list_only_published(self):
         resp = self.client.get('/')
         self.assertTrue("Recent Posts" in resp.content)

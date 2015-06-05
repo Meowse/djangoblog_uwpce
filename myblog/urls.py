@@ -9,4 +9,7 @@ urlpatterns = patterns(
     url(r'^posts/(?P<post_id>\d+)/$',
         'detail_view',
         name="blog_detail"),
+    url(r'^categories/(?P<category_id>\d+)/$',
+        'category_detail_view',
+        name="category_detail"),
 )
