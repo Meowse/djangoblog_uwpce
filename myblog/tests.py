@@ -20,7 +20,7 @@ class PostTestCase(TestCase):
     def test_author_name(self):
         expected = u"Mr. Administrator"
         p1 = Post(author=self.user)
-        actual = p1.author_name
+        actual = p1.author_name()
         self.assertEqual(expected, actual)
 
 

@@ -13,6 +13,8 @@ class Post(models.Model):
     def __unicode__(self):
         return self.title
 
+    def author_name(self):
+        return self.author.first_name + " " + self.author.last_name
 
 class Category(models.Model):
     name = models.CharField(max_length=128)
