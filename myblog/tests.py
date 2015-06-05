@@ -17,6 +17,12 @@ class PostTestCase(TestCase):
         actual = unicode(p1)
         self.assertEqual(expected, actual)
 
+    def test_author_name(self):
+        expected = u"Mr. Administrator"
+        p1 = Post(author=self.user)
+        actual = p1.author_name
+        self.assertEqual(expected, actual)
+
 
 class CategoryTestCase(TestCase):
 
