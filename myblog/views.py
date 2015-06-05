@@ -37,8 +37,8 @@ def category_detail_view(request, category_id):
     except Category.DoesNotExist:
         raise Http404
     published = Post.objects.exclude(published_date__exact=None)
-#    posts = published.filter(categories=category)
-    posts = [post for post in published.all() if category in post.categories.all()]
+    posts = published.filter(categories=category)
+#    posts = [post for post in published.all() if category in post.categories.all()]
     context = {
         'category': category,
         'posts': posts
